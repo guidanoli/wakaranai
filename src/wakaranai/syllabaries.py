@@ -4,6 +4,11 @@ kana and whose values are their rōmaji equivalent.
 If a kana has more than one rōmaji equivalent, then the value
 is a set of strings instead of a string."""
 
+import random
+from typing import NewType
+from dataclasses import dataclass
+from colorama import Fore
+
 HIRAGANA = {
     'あ': 'a',
     'い': 'i',
@@ -101,3 +106,52 @@ KATAKANA = {
     'ヲ': 'wo',
     'ン': 'n',
 }
+
+Syllabary = NewType('Syllabary', dict[str, str])
+
+
+@dataclass
+class SyllabaryTest:
+    syllabary: Syllabary
+    syllables: list[str]
+
+
+def generate_test(syllabary: Syllabary) -> SyllabaryTest:
+    syllables = list(syllabary.keys())
+    random.shuffle(syllables)
+    return SyllabaryTest(syllabary, syllables)
+
+
+@dataclass
+class SyllabaryTestResult:
+    test: SyllabaryTest
+    answers: Syllabary
+
+
+def apply_test(test: SyllabaryTest) -> SyllabaryTestResult:
+    answers = {}
+    for syllable in test.syllables:
+        answers[syllable] = input('{}? '.format(syllable))
+    return SyllabaryTestResult(test, answers)
+
+
+def show_test_result(test_result: SyllabaryTestResult) -> None:
+    syllabary = test_result.test.syllabary
+    for syllable, answer in test_result.answers.items():
+        correct_answer = syllabary[syllable]
+
+        if isinstance(correct_answer, set):
+            correct_answer_str = '/'.join(correct_answer)
+            is_answer_correct = (answer in correct_answer)
+        else:
+            correct_answer_str = correct_answer
+            is_answer_correct = (answer == correct_answer)
+
+        if is_answer_correct:
+            print(Fore.GREEN + f'{syllable} -- {correct_answer_str}')
+        elif answer == "":
+            print(Fore.RED + f'{syllable} -- {correct_answer_str}')
+        else:
+            print(
+                Fore.YELLOW +
+                f'{syllable} -- {correct_answer_str} (guessed "{answer}")')
