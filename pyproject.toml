@@ -11,6 +11,9 @@ authors = [
 description = "An educational tool for learning hiragana and katakana"
 readme = "README.md"
 requires-python = ">=3.8"
+dependencies = [
+    "colorama==0.4.6",
+]
 classifiers = [
     "Environment :: Console",
     "Intended Audience :: Education",
