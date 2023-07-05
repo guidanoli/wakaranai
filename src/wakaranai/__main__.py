@@ -18,7 +18,7 @@ parser.add_argument(
     help="the kana to be covered by the quiz")
 
 
-def question_fmt(question: str) -> str:
+def question_fmt(question: quiz.Question) -> str:
     return f'{question}? '
 
 
@@ -35,8 +35,9 @@ def green(s: str) -> str:
 
 
 def correction_fmt(
-        question: str, is_correct: bool, correct_answers: set[str],
-        answer: str) -> str:
+        question: quiz.Question, is_correct: bool,
+        correct_answers: set[quiz.Answer],
+        answer: quiz.Answer) -> str:
     if is_correct:
         return f'{question} --> ' + green(f'{answer} ✓')
     else:
