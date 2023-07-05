@@ -1,4 +1,4 @@
-from . import romaji, quiz
+from . import romaji, quiz, __version__
 
 from argparse import ArgumentParser
 
@@ -12,7 +12,7 @@ ROMAJI = {
 parser = ArgumentParser(
     prog="wakaranai",
     description="An educational tool for learning hiragana and katakana")
-parser.add_argument('-v', '--version', action='version', version="0.0.1")
+parser.add_argument('-v', '--version', action='version', version=__version__)
 parser.add_argument(
     'kana', choices=ROMAJI.keys(),
     help="the kana to be covered by the quiz")
