@@ -4,21 +4,19 @@ You may give only one answer to each question of a quiz.
 """
 
 import random
-from typing import NewType
 from collections.abc import Callable
 
-Question = NewType('Question', str)
-Questions = NewType('Questions', list[Question])
-QuestionFormatter = NewType('QuestionFormatter', Callable[[Question], str])
+Question = str
+Questions = list[Question]
+QuestionFormatter = Callable[[Question], str]
 
-Answer = NewType('Answer', str)
+Answer = str
 
-AnswerKey = NewType('AnswerKey', dict[Question, set[Answer]])
-Answers = NewType('Answers', dict[Question, Answer])
+AnswerKey = dict[Question, set[Answer]]
+Answers = dict[Question, Answer]
 
-Correction = NewType('Correction', dict[Question, bool])
-CorrectionFormatter = NewType('CorrectionFormatter', Callable[[
-                              Question, bool, set[Answer], Answer], str])
+Correction = dict[Question, bool]
+CorrectionFormatter = Callable[[Question, bool, set[Answer], Answer], str]
 
 
 def shuffle_questions(answer_key: AnswerKey) -> Questions:
