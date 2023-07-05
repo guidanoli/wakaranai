@@ -1,4 +1,4 @@
-from . import kana
+from . import romaji
 from . import quiz
 
-__all__ = ["kana", "quiz"]
+__all__ = ["romaji", "quiz"]

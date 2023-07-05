@@ -1,12 +1,12 @@
-from . import kana, quiz
+from . import romaji, quiz
 
 from argparse import ArgumentParser
 
 from colorama import Fore
 
-KANA_CHOICES = {
-    "hiragana": kana.HIRAGANA,
-    "katakana": kana.KATAKANA,
+ROMAJI = {
+    "hiragana": romaji.HIRAGANA,
+    "katakana": romaji.KATAKANA,
 }
 
 parser = ArgumentParser(
@@ -14,8 +14,8 @@ parser = ArgumentParser(
     description="An educational tool for learning hiragana and katakana")
 parser.add_argument('-v', '--version', action='version', version="0.0.1")
 parser.add_argument(
-    'kana', choices=KANA_CHOICES.keys(),
-    help="the kana you'd like to practice")
+    'kana', choices=ROMAJI.keys(),
+    help="the kana to be covered by the quiz")
 
 
 def question_fmt(question: str) -> str:
@@ -50,7 +50,7 @@ def correction_fmt(
 
 def main() -> None:
     args = parser.parse_args()
-    answer_key = KANA_CHOICES[args.kana]
+    answer_key = ROMAJI[args.kana]
     questions = quiz.shuffle_questions(answer_key)
     answers = quiz.ask_questions(questions, question_fmt)
     correction = quiz.check_answers(answer_key, answers)
