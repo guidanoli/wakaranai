@@ -1,3 +1,4 @@
-from . import syllabaries
+from . import kana
+from . import quiz
 
-__all__ = ["syllabaries"]
+__all__ = ["kana", "quiz"]
