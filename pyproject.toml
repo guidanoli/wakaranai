@@ -4,12 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "wakaranai"
-version = "0.0.1rc2"
 authors = [
   { name="Guilherme Dantas" },
 ]
 description = "An educational tool for learning hiragana and katakana"
 readme = "README.md"
+dynamic = [
+    "version",
+]
 requires-python = ">=3.8"
 dependencies = [
     "colorama==0.4.6",
@@ -28,3 +30,6 @@ classifiers = [
 [project.urls]
 "Source Code" = "https://github.com/guidanoli/wakaranai"
 "Bug Tracker" = "https://github.com/guidanoli/wakaranai/issues"
+
+[tool.hatch.version]
+path = "src/wakaranai/__init__.py"
