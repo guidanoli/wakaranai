@@ -26,6 +26,13 @@ classifiers = [
     "Operating System :: OS Independent",
     "Topic :: Education",
 ]
+keywords = [
+    "japanese",
+    "hiragana",
+    "katakana",
+    "education",
+    "learning",
+]
 
 [project.urls]
 "Source Code" = "https://github.com/guidanoli/wakaranai"
