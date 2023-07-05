@@ -1,6 +1,6 @@
-"""This module defines the kana of the Japanese language.
-Hiragana and katakana are defined as dictionaries whose keys are
-kana and whose values are their romaji equivalents.
+"""This module defines the romanization of hiragana and katana.
+The accepted romanizations are: Hepburn, Nihon-shiki, and Kunrei-shiki.
+Obsolete syllables such as ゐ and ヰ are ignored.
 """
 
 HIRAGANA = {
