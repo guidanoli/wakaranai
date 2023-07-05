@@ -54,6 +54,7 @@ def main() -> None:
     questions = quiz.shuffle_questions(answer_key)
     answers = quiz.ask_questions(questions, question_fmt)
     correction = quiz.check_answers(answer_key, answers)
+    print()
     quiz.print_correction(
         answer_key,
         questions,
